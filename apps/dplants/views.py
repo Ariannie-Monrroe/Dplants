@@ -13,3 +13,6 @@ def cargarSesion(request):
 
 def cargarRegistro(request): 
     return render(request,"singUp.html")
+
+def cargarCarrito(request):
+    return render(request, "Carrito.html")
