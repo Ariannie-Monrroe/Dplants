@@ -7,7 +7,7 @@ class Categoria(models.Model):
 
     def __str__(self):
         txt = "{0} - {1}"
-        return txt.format(self.id_categoria , self.nombre_categoria)
+        return txt.format(self.id_categoria, self.nombre_categoria)
 
 
 class Producto(models.Model):
@@ -23,7 +23,7 @@ class Producto(models.Model):
 
     def __str__(self):
         txt = "Producto N° {0} - Stock {1} - Precio {2} - fecha {3}"
-        return txt.format(self.sku,self.stock,self.precio,self.fecha)
+        return txt.format(self.sku, self.stock, self.precio, self.fecha)
     
 class Vendido(models.Model):
     
@@ -38,4 +38,15 @@ class Vendido(models.Model):
 
     def __str__(self):
         txt = "Producto N° {0} - Stock {1} - Precio {2} - fecha {3}"
-        return txt.format(self.sku_vendido,self.stock_vendido,self.precio_vendido,self.fecha_vendido)
+        return txt.format(self.sku_vendido, self.stock_vendido, self.precio_vendido, self.fecha_vendido)
+
+class Usuario(models.Model):
+    
+    id= models.IntegerField(primary_key=True)
+    usuario = models.CharField(max_length=50)
+    contraseña = models.CharField(max_length=50)
+    correo = models.CharField(max_length=50)  
+    
+    def __str__(self):
+        txt= "Id {0} - Correo {1} - Usuario {2} - Contraseña {3}"
+        return txt.format(self.id, self.correo, self.usuario, self.contraseña) 
