@@ -50,3 +50,11 @@ class Usuario(models.Model):
     def __str__(self):
         txt= "Id {0} - Correo {1} - Usuario {2} - Contraseña {3}"
         return txt.format(self.id, self.correo, self.usuario, self.contraseña) 
+
+
+class ProductoCarrito(models.Model):
+    nombrePC = models.CharField(max_length=60)
+    precioPC = models.IntegerField()
+    
+    def __str__(self):
+        return f'{self.nombrePC} -> {self.precioPC}'
