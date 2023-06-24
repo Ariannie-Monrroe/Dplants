@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.dplants'
     
+    
+    
 ]
 
 MIDDLEWARE = [
@@ -64,7 +66,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'apps\dplants\context_processor.total_carrito'
+                
             ],
         },
     },

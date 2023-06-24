@@ -4,6 +4,20 @@
 
 {% block body %}
 
+{% for ProductoCarrito in producto %}
+
+{% comment %} Aca se empieza el carrito  {% endcomment %}
+    <div class="col-6">
+        <div class="card" style="height: 10rem; width: 23rem; margin: 5px 0px;">
+            <div class = "card-body">
+                <h5 class ="card-tittle">{{ProductoCarrito.nombrePC}}</h5>
+            </div>
+        </div>
+    </div>
+
+
     
+
+{% endfor %}
 
 {% endblock %}

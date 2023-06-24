@@ -1,44 +1,37 @@
 from django.db import models
 
 # Create your models here.
-class Categoria(models.Model):
-    id_categoria = models.IntegerField(primary_key=True)
-    nombre_categoria = models.CharField(max_length=22)
 
-    def __str__(self):
-        txt = "{0} - {1}"
-        return txt.format(self.id_categoria, self.nombre_categoria)
-
-
-class Producto(models.Model):
+class Category(models.Model):
+    name = models.CharField(max_length=300)
+    featured = models.BooleanField(default=False)
     
-    sku = models.CharField(primary_key=True,max_length=15)
-    nombre = models.CharField(max_length=50)
-    precio = models.IntegerField()
-    stock = models.IntegerField()
-    fecha = models.DateField(auto_now_add=True)
-    descripcion = models.CharField(max_length=120)
-    imagenUrl = models.ImageField(upload_to="imagenesProducto")
-    categoriaId = models.ForeignKey(Categoria, on_delete=models.CASCADE)
-
     def __str__(self):
-        txt = "Producto N° {0} - Stock {1} - Precio {2} - fecha {3}"
-        return txt.format(self.sku, self.stock, self.precio, self.fecha)
+        return self.name
     
-class Vendido(models.Model):
-    
-    sku_vendido = models.CharField(primary_key=True,max_length=15)
-    nombre_vendido = models.CharField(max_length=50)
-    precio_vendido = models.IntegerField()
-    stock_vendido = models.IntegerField()
-    fecha_vendido = models.DateField(auto_now_add=True)
-    descripcion_vendido = models.CharField(max_length=120)
-    imagenUrl_vendido = models.ImageField(upload_to="imagenesProducto")
-    categoriaId_vendido = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    class Meta:
+        db_table = 'categories'
+        verbose_name = 'Categoria'
+        verbose_name_plural = 'Categorias'
+        ordering = ['-id']
+        
 
+class Product(models.Model):
+    name = models.CharField(max_length=300)
+    slug = models.SlugField()
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='products/', blank=True)
+    excerpt = models.TextField(max_length=200, verbose_name='Extracto')
+    detail = models.TextField(max_length=1000, verbose_name='Informacion del producto')
+    avaible = models.BooleanField(default=True)
+    
     def __str__(self):
-        txt = "Producto N° {0} - Stock {1} - Precio {2} - fecha {3}"
-        return txt.format(self.sku_vendido, self.stock_vendido, self.precio_vendido, self.fecha_vendido)
+        return self.name
+    class Meta:
+        db_table = 'products'
+        verbose_name = 'Producto'
+        verbose_name_plural = 'Productos'
+        ordering = ['id']   
 
 class Usuario(models.Model):
     
@@ -50,11 +43,3 @@ class Usuario(models.Model):
     def __str__(self):
         txt= "Id {0} - Correo {1} - Usuario {2} - Contraseña {3}"
         return txt.format(self.id, self.correo, self.usuario, self.contraseña) 
-
-
-class ProductoCarrito(models.Model):
-    nombrePC = models.CharField(max_length=60)
-    precioPC = models.IntegerField()
-    
-    def __str__(self):
-        return f'{self.nombrePC} -> {self.precioPC}'

@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+
 from .models import *
+from apps.dplants import *
 # Create your views here.
-
-
 
 def cargarIndiex(request):
     return render(request,"indiex.html")
@@ -16,3 +17,6 @@ def cargarRegistro(request):
 
 def cargarCarrito(request):
     return render(request, "Carrito.html")
+
+
+    
