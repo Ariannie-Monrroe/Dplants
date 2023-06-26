@@ -10,7 +10,7 @@ urlpatterns = [
     path('',views.cargarIndiex),
     path('logIn',views.cargarSesion),
     path('singUp',views.cargarRegistro),
-    
+    path('productoCarrito',views.cargarProductoCarrito),
     path('cart',Cart),
     path('addCart/<product_id>/', addCart, name= "add_to"),
     path('removeCart/<product_id>/', removeCart, name= "rem_to"),

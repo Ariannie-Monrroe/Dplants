@@ -18,16 +18,20 @@ class Cart:
             self.cart[product.id] = {
                 "product_id": product.slug,
                 "name": product.name,
-                "quantity": 1,
+                "stock": product.stock,
                 "prices": str(product.prices),
-                "image": product.image.url
-                
+                "image": product.image.url,
+                "quantity": 1,
             }
         else:
+            # self.cart[product.slug]["quantity"] +=1
+            # self.cart[product.slug]['prices'] +=product.prices
             for key, value in self.cart.items():
                 if key == str(product.slug):
-                    value["quantity"] = value["quantity"]+1
-                    break
+                    value["quantity"]+=1
+                    
+                    
+                
         self.save()
         
     def save(self):
@@ -44,7 +48,7 @@ class Cart:
     def decrement(self, product):
         for key, value in self.cart.items():
             if key == str(product.slug):
-                value["quantity"] = value["quantity"]-1
+                value["quantity"] -=1
                 if value["quantity"] < 1:
                     self.remove(product)
                 else:

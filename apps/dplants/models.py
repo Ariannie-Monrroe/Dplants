@@ -25,6 +25,7 @@ class Product(models.Model):
     detail = models.TextField(max_length=1000, verbose_name='Informacion del producto')
     avaible = models.BooleanField(default=True)
     prices = models.IntegerField()
+    stock = models.IntegerField(default=0)
     
     def __str__(self):
         return self.name

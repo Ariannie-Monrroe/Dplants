@@ -16,6 +16,9 @@ def cargarSesion(request):
 def cargarRegistro(request): 
     return render(request,"singUp.html")
 
+def cargarProductoCarrito(request): 
+    return render(request,"productoCarrito.html")
+
 
 
 
@@ -38,7 +41,8 @@ def removeCart(request, product_id):
     cart.remove(product)
     return redirect("/")
 
-def clearCart(request,):
+def clearCart(request):
     cart = Cart(request)
+    
     cart.clear()
     return redirect("/")
