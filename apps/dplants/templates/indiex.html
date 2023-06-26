@@ -35,9 +35,7 @@
 <div class="container mt-5">
     <h1 class="text-center font-weigth-normal">Products</h1>
 </div>
-<div class="col-4">
-    {% include "Carrito.html" %}
-</div>
+
 <div class="container mt-4 d-flex mb-5">
     <div class = "row">
         {% for product in products %}
@@ -58,7 +56,9 @@
     </div>
 </div>
 
-
+<div class="col-4">
+    {% include "Carrito.html" %}
+</div>
 
 
 
