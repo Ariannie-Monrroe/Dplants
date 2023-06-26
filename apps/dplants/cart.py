@@ -1,4 +1,4 @@
-
+from .views import *
 #Se inicia el carrito 
 class Cart:
     def __init__(self, request):
@@ -7,8 +7,10 @@ class Cart:
         cart = self.session.get("cart")
         
         if not cart:
-            cart= self.session["cart"]={}
-        self.cart = cart
+            self.session["cart"]={}
+            self.cart = self.session["cart"]
+        else:
+            self.cart = cart
         
 #Agregar un producto y cantidad
     def add(self, product):
@@ -17,7 +19,7 @@ class Cart:
                 "product_id": product.id,
                 "name": product.name,
                 "quantity": 1,
-                "price": str(product.price),
+                "prices": str(product.prices),
                 "image": product.image.url
                 
             }
@@ -53,4 +55,10 @@ class Cart:
         self.session["cart"] = {}
         self.session.modified = True
         
+    def totalCart(request):
+        total=0
+        if "cart" in request.session.keys():
+            for key, value in request.session["carrito"].items():
+                total += int(value["quantity"])
+                return {"totalCart": total }
         

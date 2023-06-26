@@ -1,30 +1,45 @@
-{% extends './base.html' %}
-
 {% load static %}
+<div class = "alert alert-primary" role = "alert">
+    <table class = "table table-bordered">
+        <thead>
+            <tr>
+                <th scope = "row" colspan = "3" class = "text-center">CARRITO</th>
+            </tr>
+                <tr>
+                    <th scope = "col">NOMBRE</th>
+                    <th scope = "col">PRECIO</th>
+                    <th scope = "col">CANTIDAD</th>
 
-{% block body %}
-
-
-
-{% comment %} Aca se empieza el carrito  {% endcomment %}
-
-
-
-    <div class="col-md-4 mt-5">
-        <div class="card">
-            {% for product in products %}
-                <img src="{{product.image.url}}" class="card-img-top w-100" alt="">
-                <div class="card-body">
-                    <h2 class="card-title"> {{product.name}} </h2>
-                    <div class="d-flex justify-content-between">
-                        <p class="card-text">Ideal para enraizar esquejes</p>
-                        <P class="card-text mr-4 text-success">$1.500</P>
-                    </div>
-                    <button type="button" class="btn btn-success d-flex">Comprar</button>
-                </div>
+                </tr>
+        </thead>
+        <tbody>
+            {% if request.session.cart.items %}
+            {% for key, value in request.session.cart.items %}
+                <tr>
+                    <td>{{value.name}}</td>
+                    <td>{{value.price}}</td>
+                    <td>{{value.quantity}}
+                        <a href = "{url 'add_to' value.product_id}" class = "badge btn-dark badge btn-dark">+</a>
+                        <a href = "{url 'dct_to' value.product_id}" class = "badge btn-dark badge btn-dark">-</a>
+                    </td>
+                </tr>
             {% endfor %}
-        </div>
-    </div>
-
-
-{% endblock %}
+            {% else %}
+                <tr>
+                    <td colspan="3">
+                        <div class = "alert alert-danger text-center"> Sin productos </div>
+                    </td>
+                </tr>
+            {% endif %}
+                <tr>
+                    <th scope = "row">Total:</th>
+                    <td colspan = "2" >${{total_carrito}}</td>
+                </tr>
+        </tbody>
+    </table>
+    <hr>
+</div>
+<div class = "row text-center">
+    <div class = "col-6"><a href = "{% url 'clr_to' %}" class = "btn-danger" >Limpiar</a></div>
+    <div class = "col-6"><a href = "#" class = "btn-danger" >Comprar</a></div>
+</div>
