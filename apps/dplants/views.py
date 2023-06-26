@@ -16,7 +16,10 @@ def cargarRegistro(request):
     return render(request,"singUp.html")
 
 def cargarCarrito(request):
-    return render(request, "Carrito.html")
+    products = Product.objects.all()
+    return render(request, "Carrito.html", {
+        "products": products
+    })
 
 
     

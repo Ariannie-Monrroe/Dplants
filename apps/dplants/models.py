@@ -20,7 +20,7 @@ class Product(models.Model):
     name = models.CharField(max_length=300)
     slug = models.SlugField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='products/', blank=True)
+    image = models.ImageField(upload_to='products', blank=True)
     excerpt = models.TextField(max_length=200, verbose_name='Extracto')
     detail = models.TextField(max_length=1000, verbose_name='Informacion del producto')
     avaible = models.BooleanField(default=True)
