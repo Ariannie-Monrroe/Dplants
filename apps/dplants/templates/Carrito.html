@@ -20,8 +20,8 @@
                     <td>{{value.price}}</td>
                     <td>{{value.quantity}}
 
-                        <a href = "{url 'addCart' value.product_id}" class = "badge btn-dark badge btn-dark">+</a>
-                        <a href = "{url 'decrementCart' value.product_id}" class = "badge btn-dark badge btn-dark">-</a>
+                        <a href = "/addCart/{{value.product_id}}" class = "badge btn-dark badge btn-dark">+</a>
+                        <a href = "/decrementCart/{{value.product_id}}" class = "badge btn-dark badge btn-dark">-</a>
                         
                     </td>
                 </tr>
@@ -42,6 +42,6 @@
     <hr>
 </div>
 <div class = "row text-center">
-    <div class = "col-6"><a href = "{% url 'clearCart' %}" class = "btn-danger" >Limpiar</a></div>
+    <div class = "col-6"><a href = "/clearCart" class = "btn-danger" >Limpiar</a></div>
     <div class = "col-6"><a href = "#" class = "btn-danger" >Comprar</a></div>
 </div>

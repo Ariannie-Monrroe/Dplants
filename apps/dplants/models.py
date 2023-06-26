@@ -13,7 +13,7 @@ class Category(models.Model):
         db_table = 'categories'
         verbose_name = 'Categoria'
         verbose_name_plural = 'Categorias'
-        ordering = ['-id']
+        
         
 
 class Product(models.Model):
@@ -32,7 +32,7 @@ class Product(models.Model):
         db_table = 'products'
         verbose_name = 'Producto'
         verbose_name_plural = 'Productos'
-        ordering = ['id']   
+        
 
 class Usuario(models.Model):
     

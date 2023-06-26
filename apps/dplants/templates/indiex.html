@@ -48,7 +48,7 @@
                                     <p class="card-text">{{product.detail}}</p>
                                     <P class="card-text mr-4 text-success">${{product.prices}}</P>
                                 </div>
-                            <a href = "{% url 'addCart' product_id %}" type="button" class="btn btn-success d-flex">Comprar</a>
+                            <a href = "/addCart/{{product.slug}}" type="button" class="btn btn-success d-flex">Comprar</a>
                         </div>
                 </div>
             </div>

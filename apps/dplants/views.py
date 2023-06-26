@@ -1,53 +1,44 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
-
 from apps.dplants.cart import Cart
-from .models import *
-from apps.dplants import *
-from .views import *
+from .models import Product
+
+
 # Create your views here.
 
 def cargarIndiex(request):
     products = Product.objects.all()
-    return render(request,"indiex.html", {
-        "products": products
-    })
+    return render(request,'indiex.html', {'products': products})
 
 
 def cargarSesion(request): 
-    return render(request,"logIn.html") 
+    return render(request,"logIn.htmsl") 
 
 def cargarRegistro(request): 
     return render(request,"singUp.html")
 
-def cargarCarrito(request):
-    products = Product.objects.all()
-    return render(request, "indiex.html", {
-        "products": products
-    })
+
 
 
 def addCart(request, product_id):
     cart = Cart(request) 
-    product = Product.objects.get(id = product_id)   
+    product = Product.objects.get(slug = product_id)   
     cart.add(product)
-    return redirect("/cargarIndiex")
+    return redirect("/")
 
 
 def decrementCart(request,product_id):
     cart = Cart(request)
-    product = Product.objects.get(id = product_id)
+    product = Product.objects.get(slug = product_id)
     cart.decrement(product)
-    return redirect("/cargarIndiex")
+    return redirect("/")
 
 def removeCart(request, product_id):
     cart = Cart(request)
-    product = Product.objects.get(id = product_id)
+    product = Product.objects.get(slug = product_id)
     cart.remove(product)
-    return redirect("/cargarIndiex")
+    return redirect("/")
 
-def clearCart(request,product_id):
+def clearCart(request,):
     cart = Cart(request)
-    product = Product.objects.get(id = product_id)
-    cart.clear(product)
-    return redirect("/cargarIndiex")
+    cart.clear()
+    return redirect("/")

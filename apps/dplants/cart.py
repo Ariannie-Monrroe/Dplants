@@ -14,9 +14,9 @@ class Cart:
         
 #Agregar un producto y cantidad
     def add(self, product):
-        if str(product.id) not in self.cart.keys():
+        if str(product.slug) not in self.cart.keys():
             self.cart[product.id] = {
-                "product_id": product.id,
+                "product_id": product.slug,
                 "name": product.name,
                 "quantity": 1,
                 "prices": str(product.prices),
@@ -25,7 +25,7 @@ class Cart:
             }
         else:
             for key, value in self.cart.items():
-                if key == str(product.id):
+                if key == str(product.slug):
                     value["quantity"] = value["quantity"]+1
                     break
         self.save()
@@ -36,13 +36,14 @@ class Cart:
     
 #eliminar un producto o bajar cantidad 
     def remove(self, product):
-        product_id = str(product.id)
+        product_id = str(product.slug)
         if product_id in self.cart:
             del self.cart[product_id]
             self.save()
+            
     def decrement(self, product):
         for key, value in self.cart.items():
-            if key == str(product.id):
+            if key == str(product.slug):
                 value["quantity"] = value["quantity"]-1
                 if value["quantity"] < 1:
                     self.remove(product)
@@ -51,14 +52,11 @@ class Cart:
                 break
             else:
                 print("El producto no esta en el carrito")
+                
     def clear(self):
-        self.session["cart"] = {}
-        self.session.modified = True
         
-    def totalCart(request):
-        total=0
-        if "cart" in request.session.keys():
-            for key, value in request.session["carrito"].items():
-                total += int(value["quantity"])
-                return {"totalCart": total }
+        self.session["cart"] = {}
+        self.session.modified = True  
+        
+    
         
