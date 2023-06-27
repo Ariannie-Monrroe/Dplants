@@ -37,7 +37,7 @@ class Product(models.Model):
 
 class Usuario(models.Model):
     
-    id= models.IntegerField(primary_key=True)
+    id= models.CharField(primary_key=True, max_length = 30)
     usuario = models.CharField(max_length=50)
     contraseña = models.CharField(max_length=50)
     correo = models.CharField(max_length=50)  

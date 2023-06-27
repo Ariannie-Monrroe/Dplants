@@ -6,13 +6,6 @@
 
 {% block body %}
 
-
-<!--Carrito -->
-<div class="col-4">
-    {% include "Carrito.html" %}
-</div>
-<!--Fin de carrito -->
-
 <div class="container mt-4 d-flex mb-5">
     <div class = "row">
         {% for product in products %}
@@ -32,12 +25,5 @@
         {% endfor %}
     </div>
 </div>
-
-
-
-
-
-<!-- Fin Cards -->
-
 
 {% endblock %}

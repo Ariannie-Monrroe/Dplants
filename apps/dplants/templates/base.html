@@ -18,12 +18,16 @@
 
         <div class="container-fluid ">
     
-            <div class="navb-logo">
+            <div  class="navb-logo">
                 <!-- <p>dPLANTS</p> -->
-                <img src="{% static 'img/ffffLogo.jpg' %}" alt="">
+                <img  src="{% static 'img/ffffLogo.jpg' %}" alt="">
             </div>
     
             <div class="navb-items d-none d-xl-flex">
+
+                <div class="item" id="itemOne">
+                    <a href="/">Home</a>
+                </div>
     
                 <div class="item" id="itemOne">
                     <a href="#">Plantas</a>
@@ -38,11 +42,11 @@
                 </div>
     
                 <div class="item" id="itemFour">
-                    <a href="/logIn.html">Log_In</a>
+                    <a href="{% url 'log_in' %}">Log_In</a>
                 </div>
     
                 <div class="itemShop">
-                    <a href="/productoCarrito.html"><i class="fa-solid fa-cart-shopping"></i></a>
+                    <a href="/productoCarrito"><i class="fa-solid fa-cart-shopping"></i></a>
                 </div>
     
                 <div class="darkmode item">
@@ -91,7 +95,7 @@
     
                             <div class="modal-line">
                                 <i class="fa-solid fa-right-to-bracket"></i>
-                                <a href="/logIn.html">Log In</a>
+                                <a href="/logIn">Log In</a>
                             </div>
     
                             <div class="modal-line">

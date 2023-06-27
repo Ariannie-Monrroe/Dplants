@@ -17,6 +17,8 @@ urlpatterns = [
     path('clearCart/', clearCart, name= "clr_to"),
     path('decrementCart/<product_id>/', decrementCart, name= "dct_to"),
     
+    path('crearUsuario',views.crearUsuario)
+    
     
 
 ]
