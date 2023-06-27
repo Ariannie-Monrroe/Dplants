@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from apps.dplants.cart import Cart
 from .models import Product, Usuario
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-
+import time 
 
 # Create your views here.
 
@@ -52,14 +53,18 @@ def crearUsuario(request):
     
     v_id = request.POST['username']
     v_usuario = request.POST['username']
-    
+    v_correo = request.POST['email']
+    v_pass =request.POST['password']
     
     Usuario.objects.create(
         
         id = v_id,
         usuario = v_usuario,
+        contraseña = v_pass,
+        correo=v_correo
         
         )
-
+    time.sleep(2)
+    messages.success(request,'Registrado perfectamente')
     return redirect('/')
         
