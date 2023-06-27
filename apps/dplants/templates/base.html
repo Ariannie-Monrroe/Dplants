@@ -40,7 +40,18 @@
                 <div class="item" id="itemThree">
                     <a href="#">PlantCare</a>
                 </div>
-    
+                <div class="container">
+
+                    {% if messages %}
+                        {% for messages in messages %}
+                            
+                            <div class="alert alert-warning" role="alert">
+                                {{ mesagge }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                
+                </div>
                 <div class="item" id="itemFour">
                     <a href="{% url 'log_in' %}">Log_In</a>
                 </div>

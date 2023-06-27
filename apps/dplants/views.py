@@ -52,15 +52,12 @@ def crearUsuario(request):
     
     v_id = request.POST['username']
     v_usuario = request.POST['username']
-    v_correo = request.POST['email']
-    v_pass =request.POST['password']
+    
     
     Usuario.objects.create(
         
         id = v_id,
         usuario = v_usuario,
-        contraseña = v_pass,
-        correo=v_correo
         
         )
 
